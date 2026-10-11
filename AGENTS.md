@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Rural Camps decisions
+- Tours/stays/prices live in `src/lib/catalog.ts` (phase 1) and the server recomputes booking totals from it — never trust browser prices.
+- Booking requests and enquiries are written only via server functions with the admin client after zod validation; tables have RLS on with no public policies.
