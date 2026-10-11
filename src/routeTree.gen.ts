@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DestinationsRouteImport } from './routes/destinations'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as UpcomingToursRouteImport } from './routes/upcoming-tours'
+import { Route as CampingIndexRouteImport } from './routes/camping.index'
+import { Route as CampingSlugRouteImport } from './routes/camping.$slug'
+import { Route as PrivateToursIndexRouteImport } from './routes/private-tours.index'
+import { Route as PrivateToursSlugRouteImport } from './routes/private-tours.$slug'
+import { Route as ToursSlugRouteImport } from './routes/tours.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsRoute = DestinationsRouteImport.update({
+  id: '/destinations',
+  path: '/destinations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UpcomingToursRoute = UpcomingToursRouteImport.update({
+  id: '/upcoming-tours',
+  path: '/upcoming-tours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampingIndexRoute = CampingIndexRouteImport.update({
+  id: '/camping/',
+  path: '/camping/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampingSlugRoute = CampingSlugRouteImport.update({
+  id: '/camping/$slug',
+  path: '/camping/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateToursIndexRoute = PrivateToursIndexRouteImport.update({
+  id: '/private-tours/',
+  path: '/private-tours/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateToursSlugRoute = PrivateToursSlugRouteImport.update({
+  id: '/private-tours/$slug',
+  path: '/private-tours/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToursSlugRoute = ToursSlugRouteImport.update({
+  id: '/tours/$slug',
+  path: '/tours/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/destinations': typeof DestinationsRoute
+  '/gallery': typeof GalleryRoute
+  '/upcoming-tours': typeof UpcomingToursRoute
+  '/camping/$slug': typeof CampingSlugRoute
+  '/private-tours/$slug': typeof PrivateToursSlugRoute
+  '/tours/$slug': typeof ToursSlugRoute
+  '/camping/': typeof CampingIndexRoute
+  '/private-tours/': typeof PrivateToursIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/destinations': typeof DestinationsRoute
+  '/gallery': typeof GalleryRoute
+  '/upcoming-tours': typeof UpcomingToursRoute
+  '/camping/$slug': typeof CampingSlugRoute
+  '/private-tours/$slug': typeof PrivateToursSlugRoute
+  '/tours/$slug': typeof ToursSlugRoute
+  '/camping': typeof CampingIndexRoute
+  '/private-tours': typeof PrivateToursIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/destinations': typeof DestinationsRoute
+  '/gallery': typeof GalleryRoute
+  '/upcoming-tours': typeof UpcomingToursRoute
+  '/camping/$slug': typeof CampingSlugRoute
+  '/private-tours/$slug': typeof PrivateToursSlugRoute
+  '/tours/$slug': typeof ToursSlugRoute
+  '/camping/': typeof CampingIndexRoute
+  '/private-tours/': typeof PrivateToursIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/destinations'
+    | '/gallery'
+    | '/upcoming-tours'
+    | '/camping/$slug'
+    | '/private-tours/$slug'
+    | '/tours/$slug'
+    | '/camping/'
+    | '/private-tours/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/destinations'
+    | '/gallery'
+    | '/upcoming-tours'
+    | '/camping/$slug'
+    | '/private-tours/$slug'
+    | '/tours/$slug'
+    | '/camping'
+    | '/private-tours'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/destinations'
+    | '/gallery'
+    | '/upcoming-tours'
+    | '/camping/$slug'
+    | '/private-tours/$slug'
+    | '/tours/$slug'
+    | '/camping/'
+    | '/private-tours/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DestinationsRoute: typeof DestinationsRoute
+  GalleryRoute: typeof GalleryRoute
+  UpcomingToursRoute: typeof UpcomingToursRoute
+  CampingSlugRoute: typeof CampingSlugRoute
+  PrivateToursSlugRoute: typeof PrivateToursSlugRoute
+  ToursSlugRoute: typeof ToursSlugRoute
+  CampingIndexRoute: typeof CampingIndexRoute
+  PrivateToursIndexRoute: typeof PrivateToursIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations': {
+      id: '/destinations'
+      path: '/destinations'
+      fullPath: '/destinations'
+      preLoaderRoute: typeof DestinationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/upcoming-tours': {
+      id: '/upcoming-tours'
+      path: '/upcoming-tours'
+      fullPath: '/upcoming-tours'
+      preLoaderRoute: typeof UpcomingToursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/camping/': {
+      id: '/camping/'
+      path: '/camping'
+      fullPath: '/camping/'
+      preLoaderRoute: typeof CampingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/camping/$slug': {
+      id: '/camping/$slug'
+      path: '/camping/$slug'
+      fullPath: '/camping/$slug'
+      preLoaderRoute: typeof CampingSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/private-tours/': {
+      id: '/private-tours/'
+      path: '/private-tours'
+      fullPath: '/private-tours/'
+      preLoaderRoute: typeof PrivateToursIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/private-tours/$slug': {
+      id: '/private-tours/$slug'
+      path: '/private-tours/$slug'
+      fullPath: '/private-tours/$slug'
+      preLoaderRoute: typeof PrivateToursSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tours/$slug': {
+      id: '/tours/$slug'
+      path: '/tours/$slug'
+      fullPath: '/tours/$slug'
+      preLoaderRoute: typeof ToursSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DestinationsRoute: DestinationsRoute,
+  GalleryRoute: GalleryRoute,
+  UpcomingToursRoute: UpcomingToursRoute,
+  CampingSlugRoute: CampingSlugRoute,
+  PrivateToursSlugRoute: PrivateToursSlugRoute,
+  ToursSlugRoute: ToursSlugRoute,
+  CampingIndexRoute: CampingIndexRoute,
+  PrivateToursIndexRoute: PrivateToursIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
