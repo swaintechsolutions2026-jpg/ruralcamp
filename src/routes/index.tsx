@@ -29,8 +29,8 @@ const FAQ = [
 
 function Home() {
   const tours = upcomingTours();
-  const priv = PRIVATE_TOURS[0];
-  const three = PRIVATE_TOURS[1];
+  const priv = PRIVATE_TOURS[0]!;
+  const three = PRIVATE_TOURS[1]!;
   const deomali = findProduct("deomali-camping")!;
   return (
     <>

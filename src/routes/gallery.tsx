@@ -35,10 +35,10 @@ function Page() {
         </div>
         <p className="mt-10 text-center text-sm text-muted-foreground">Traveller photos and videos will be added here soon.</p>
       </section>
-      {open != null && (
-        <div role="dialog" aria-modal="true" aria-label={PHOTOS[open].alt} className="fixed inset-0 z-[60] grid place-items-center bg-forest-deep/95 p-4" onClick={() => setOpen(null)}>
+      {open != null && PHOTOS[open] && (
+        <div role="dialog" aria-modal="true" aria-label={PHOTOS[open]!.alt} className="fixed inset-0 z-[60] grid place-items-center bg-forest-deep/95 p-4" onClick={() => setOpen(null)}>
           <button aria-label="Close" className="absolute right-4 top-4 grid h-12 w-12 place-items-center text-forest-foreground"><X /></button>
-          <img src={PHOTOS[open].src} alt={PHOTOS[open].alt} className="max-h-[85vh] max-w-full rounded-lg object-contain" />
+          <img src={PHOTOS[open]!.src} alt={PHOTOS[open]!.alt} className="max-h-[85vh] max-w-full rounded-lg object-contain" />
         </div>
       )}
     </>

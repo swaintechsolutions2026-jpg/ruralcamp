@@ -22,7 +22,8 @@ const MATRIX = [
 ] as const;
 
 function Page() {
-  const [two, three] = PRIVATE_TOURS;
+  const two = PRIVATE_TOURS[0]!;
+  const three = PRIVATE_TOURS[1]!;
   return (
     <>
       <PageHero image={IMG.koraputRoad} eyebrow="Private tours" title="Your People. Your Pace. Your Koraput." />
