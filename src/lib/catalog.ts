@@ -1,6 +1,7 @@
 // Product catalog for phase 1. Prices are integer paise. Shared by browser and server;
 // the server recomputes every booking total from this file, never from the browser.
 import { IMG } from "./site";
+import ramachandiImg from "@/assets/ramachandi.jpg";
 
 export type ProductType = "group-tour" | "private-tour" | "package" | "stay";
 
@@ -228,7 +229,7 @@ export const STAYS: Product[] = [
     title: "Ramachandi Camping",
     kicker: "By the Marine Drive",
     summary: "Beach-side camping near the Puri–Konark Marine Drive for couples, friends and small parties.",
-    image: IMG.kolab,
+    image: ramachandiImg,
     location: "Ramachandi, Puri–Konark Marine Drive",
     options: [{ id: "per-camp", label: "Per camp (2 persons)", pricePaise: rs(600), unit: "camp", personsPerUnit: 2 }],
     facilities: ["Camp / tent", "Foam mattress", "Bedsheet", "Pillow", "Blanket", "Disco lighting in party area", "Music facilities", "Firewood & cooking utensils at no extra charge"],
