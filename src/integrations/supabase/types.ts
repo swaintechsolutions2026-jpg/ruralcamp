@@ -14,7 +14,120 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      booking_requests: {
+        Row: {
+          advance_paise: number | null
+          balance_paise: number | null
+          booking_status: string
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          notes: string | null
+          option_label: string | null
+          payment_status: string
+          phone: string
+          product_slug: string
+          product_title: string
+          product_type: string
+          reference: string
+          total_paise: number | null
+          travel_date: string | null
+          travellers: number
+          unit_price_paise: number | null
+        }
+        Insert: {
+          advance_paise?: number | null
+          balance_paise?: number | null
+          booking_status?: string
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          option_label?: string | null
+          payment_status?: string
+          phone: string
+          product_slug: string
+          product_title: string
+          product_type: string
+          reference?: string
+          total_paise?: number | null
+          travel_date?: string | null
+          travellers: number
+          unit_price_paise?: number | null
+        }
+        Update: {
+          advance_paise?: number | null
+          balance_paise?: number | null
+          booking_status?: string
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          option_label?: string | null
+          payment_status?: string
+          phone?: string
+          product_slug?: string
+          product_title?: string
+          product_type?: string
+          reference?: string
+          total_paise?: number | null
+          travel_date?: string | null
+          travellers?: number
+          unit_price_paise?: number | null
+        }
+        Relationships: []
+      }
+      enquiries: {
+        Row: {
+          budget: string | null
+          category: string
+          created_at: string
+          desired_date: string | null
+          email: string | null
+          id: string
+          message: string | null
+          name: string
+          phone: string
+          pickup_point: string | null
+          preference: string | null
+          status: string
+          travellers: number | null
+        }
+        Insert: {
+          budget?: string | null
+          category: string
+          created_at?: string
+          desired_date?: string | null
+          email?: string | null
+          id?: string
+          message?: string | null
+          name: string
+          phone: string
+          pickup_point?: string | null
+          preference?: string | null
+          status?: string
+          travellers?: number | null
+        }
+        Update: {
+          budget?: string | null
+          category?: string
+          created_at?: string
+          desired_date?: string | null
+          email?: string | null
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string
+          pickup_point?: string | null
+          preference?: string | null
+          status?: string
+          travellers?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
