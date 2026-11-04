@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CONTACT } from "@/lib/site";
+import logo from "@/assets/rural-camps-logo.png.asset.json";
 
 const NAV = [
   { to: "/upcoming-tours", label: "Group Tours" },
@@ -15,9 +16,12 @@ const NAV = [
 
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`flex flex-col leading-none ${className}`}>
-      <span className="font-display text-2xl tracking-wide">RURAL CAMPS</span>
-      <span className="eyebrow mt-1 text-[0.55rem] text-gold">Let's Camp, Let's Explore!</span>
+    <span className={`flex items-center gap-3 ${className}`}>
+      <img src={logo.url} alt="Rural Camps logo" width={48} height={48} className="h-11 w-11 rounded-md shadow md:h-12 md:w-12" />
+      <span className="flex flex-col leading-none">
+        <span className="font-display text-2xl tracking-wide">RURAL CAMPS</span>
+        <span className="eyebrow mt-1 text-[0.55rem] text-gold">Let's Camp, Let's Explore!</span>
+      </span>
     </span>
   );
 }
