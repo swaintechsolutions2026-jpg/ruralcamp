@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, Bed, Flame, Lamp, Mountain, Tent, UserRound, MessageCircle } from "lucide-react";
+import { ArrowDown, Bed, Flame, Lamp, Mountain, Play, Tent, UserRound, MessageCircle } from "lucide-react";
 import { DESTINATIONS, PRIVATE_TOURS, STAYS, formatINR, upcomingTours, findProduct } from "@/lib/catalog";
+import { GALLERY_VIDEOS, STAY_PHOTOS } from "@/lib/gallery-data";
 import { IMG, CONTACT } from "@/lib/site";
 import { ImageTile, SectionHead, TourCard } from "@/components/site/ui";
 
@@ -139,6 +140,33 @@ function Home() {
               </figure>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <SectionHead eyebrow="Travel memories" title="Moments From Our Camps." />
+          <Link to="/gallery" className="font-semibold text-primary underline-offset-4 hover:underline">View full gallery →</Link>
+        </div>
+        <div className="mt-12 grid auto-rows-[180px] grid-cols-2 gap-4 md:auto-rows-[220px] md:grid-cols-4">
+          <Link to="/gallery" className="group relative col-span-2 row-span-2 overflow-hidden rounded-xl">
+            <img src={GALLERY_VIDEOS[0]!.poster} alt={GALLERY_VIDEOS[0]!.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+            <span className="absolute inset-0 grid place-items-center bg-forest-deep/30">
+              <span className="grid h-16 w-16 place-items-center rounded-full bg-gold text-accent-foreground shadow-lg transition group-hover:scale-110"><Play className="ml-1" /></span>
+            </span>
+          </Link>
+          {STAY_PHOTOS.slice(0, 4).map((p, i) => (
+            <Link key={p.src} to="/gallery" className={`group relative overflow-hidden rounded-xl ${i === 1 ? "row-span-2" : ""}`}>
+              <img src={p.src} alt={p.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+            </Link>
+          ))}
+          <Link to="/gallery" className="group relative overflow-hidden rounded-xl">
+            <img src={GALLERY_VIDEOS[1]!.poster} alt={GALLERY_VIDEOS[1]!.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+            <span className="absolute inset-0 grid place-items-center bg-forest-deep/30">
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-gold text-accent-foreground shadow-lg transition group-hover:scale-110"><Play className="ml-0.5" size={20} /></span>
+            </span>
+          </Link>
         </div>
       </section>
 
