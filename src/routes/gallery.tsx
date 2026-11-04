@@ -1,15 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Play, X } from "lucide-react";
-import { DESTINATIONS } from "@/lib/catalog";
 import { IMG } from "@/lib/site";
+import { ALL_GALLERY_ITEMS, GALLERY_VIDEOS, PLACE_PHOTOS, STAY_PHOTOS, type GalleryItem } from "@/lib/gallery-data";
 import { PageHero } from "@/components/site/ui";
-
-const stay = import.meta.glob<{ url: string }>("@/assets/gallery/camp-stay-*.jpg.asset.json", { eager: true, import: "default" });
-import v1 from "@/assets/gallery/campfire-night-1.mp4.asset.json";
-import v1p from "@/assets/gallery/campfire-night-1-poster.jpg.asset.json";
-import v2 from "@/assets/gallery/campfire-night-2.mp4.asset.json";
-import v2p from "@/assets/gallery/campfire-night-2-poster.jpg.asset.json";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -23,34 +17,16 @@ export const Route = createFileRoute("/gallery")({
   component: Page,
 });
 
-type Item = { type: "photo" | "video"; src: string; poster?: string; alt: string };
-
-const stayPhotos: Item[] = Object.keys(stay)
-  .sort((a, b) => Number(a.match(/(\d+)\.jpg/)?.[1]) - Number(b.match(/(\d+)\.jpg/)?.[1]))
-  .map((k) => ({ type: "photo", src: stay[k]!.url, alt: "Rural Camps stay" }));
-
-const VIDEOS: Item[] = [
-  { type: "video", src: v1.url, poster: v1p.url, alt: "Campfire night at the camp" },
-  { type: "video", src: v2.url, poster: v2p.url, alt: "Dancing around the campfire" },
-];
-
-const PLACES: Item[] = [
-  ...DESTINATIONS.map((d) => ({ type: "photo" as const, src: d.image, alt: d.name })),
-  { type: "photo", src: IMG.rural, alt: "Rural stay near Deomali" },
-];
-
-const ALL = [...VIDEOS, ...stayPhotos, ...PLACES];
-
 const TABS = [
-  { id: "all", label: "All", items: ALL },
-  { id: "camp", label: "Camp stays", items: stayPhotos },
-  { id: "videos", label: "Videos", items: VIDEOS },
-  { id: "places", label: "Places", items: PLACES },
+  { id: "all", label: "All", items: ALL_GALLERY_ITEMS },
+  { id: "camp", label: "Camp stays", items: STAY_PHOTOS },
+  { id: "videos", label: "Videos", items: GALLERY_VIDEOS },
+  { id: "places", label: "Places", items: PLACE_PHOTOS },
 ] as const;
 
 function Page() {
   const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("all");
-  const [open, setOpen] = useState<Item | null>(null);
+  const [open, setOpen] = useState<GalleryItem | null>(null);
   const items = TABS.find((t) => t.id === tab)!.items;
 
   return (
